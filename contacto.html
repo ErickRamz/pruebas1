@@ -83,23 +83,31 @@
         <div class="col-lg-6">
           <div class="tacto-card tacto-card-lg">
             <h3 class="h4 mb-4">Envíanos un Mensaje</h3>
-            <form id="contactForm">
-            <div class="mb-3">
-              <label class="form-label">Nombre Completo</label>
-              <input type="text" id="nombre" class="form-control" required placeholder="Tu nombre">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Correo Electrónico</label>
-              <input type="email" id="correo" class="form-control" required placeholder="ejemplo@correo.com">
-            </div>
-            <div class="mb-3">
-			<label class="form-label">Mensaje</label>
-				<textarea id="mensaje" rows="4" class="form-control" required placeholder="¿En qué podemos ayudarte?"></textarea>
-			</div>
-				<button type="submit" id="btnEnviar" 
-				class="btn btn-tacto w-100 py-3 rounded-3">Enviar Mensaje</button>
-			</form>
-            <div id="contactSuccessMsg" class="alert alert-tacto d-none mt-3 mb-0">¡Mensaje enviado con éxito! Te responderemos muy pronto.</div>
+            
+            <!-- Formulario HTML nativo hacia Google Apps Script (Sin CORS/JS bloqueos) -->
+            <form action="https://script.google.com/macros/s/AKfycbzlu-6dYHMG4kKig4h2wV-kg-R_N3T0h9Sm45grIiVC1-oUrc9hmSTRMAmlXNTaq-hL/exec" 
+                  method="POST" 
+                  target="hidden_iframe" 
+                  onsubmit="const b=document.getElementById('btnEnviar'); b.disabled=true; b.innerText='Enviando...'; setTimeout(() => { alert('¡Mensaje enviado con éxito!'); this.reset(); b.disabled=false; b.innerText='Enviar Mensaje'; }, 800);">
+              
+              <div class="mb-3">
+                <label class="form-label">Nombre Completo</label>
+                <input type="text" name="nombre" class="form-control" required placeholder="Tu nombre">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Correo Electrónico</label>
+                <input type="email" name="correo" class="form-control" required placeholder="ejemplo@correo.com">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Mensaje</label>
+                <textarea name="mensaje" rows="4" class="form-control" required placeholder="¿En qué podemos ayudarte?"></textarea>
+              </div>
+              
+              <button type="submit" id="btnEnviar" class="btn btn-tacto w-100 py-3 rounded-3">Enviar Mensaje</button>
+            </form>
+
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+            
           </div>
         </div>
       </div>
@@ -115,39 +123,10 @@
   <script src="js/main.js"></script>
   
   <script>
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzlu-6dYHMG4kKig4h2wV-kg-R_N3T0h9Sm45grIiVC1-oUrc9hmSTRMAmlXNTaq-hL/exec';
-
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById('btnEnviar');
-    btn.disabled = true;
-    btn.innerText = 'Enviando...';
-
-    const formData = new URLSearchParams();
-    formData.append('nombre', document.getElementById('nombre').value);
-    formData.append('correo', document.getElementById('correo').value);
-    formData.append('mensaje', document.getElementById('mensaje').value);
-
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    })
-    .then(() => {
-      alert('¡Mensaje enviado con éxito!');
-      document.getElementById('contactForm').reset();
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Ocurrió un error al enviar el mensaje.');
-    })
-    .finally(() => {
-      btn.disabled = false;
-      btn.innerText = 'Enviar Mensaje';
-    });
-  });
-</script>
+    if (document.getElementById('year')) {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  </script>
 
 </body>
 </html>
