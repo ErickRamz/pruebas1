@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Cita | Centro de Masajes Tacto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-hero d-flex flex-column min-vh-100">
+
+  <!-- Header -->
+  <header class="tacto-header sticky-top">
+    <nav class="navbar navbar-expand-md py-3">
+      <div class="container-xxl px-3 px-sm-4">
+        <a class="navbar-brand d-flex align-items-center gap-3 m-0" href="index.html">
+          <div class="brand-icon"><svg class="ico text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></div>
+          <div>
+            <h1 class="brand-title">Centro de Masajes <span>Tacto</span></h1>
+            <span class="brand-sub d-none d-sm-block">Quiropráctica &amp; Masaje Terapéutico</span>
+          </div>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+          <ul class="navbar-nav align-items-md-center gap-md-4 pt-3 pt-md-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="quienes-somos.html">Quiénes Somos</a></li>
+          <li class="nav-item"><a class="nav-link" href="beneficios.html">Beneficios de la Terapia</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contáctanos</a></li>
+            <li class="nav-item mt-2 mt-md-0 ms-md-2">
+              <a class="btn btn-tacto rounded-pill px-4 py-2 w-100" href="agendar-cita.html">Agendar Cita</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-grow-1 d-flex flex-column">
+    <section class="container px-3 py-5 my-md-4 fade-in" style="max-width:34rem">
+      <div class="tacto-card tacto-card-lg">
+        <h2 class="h3 fw-bold text-white mb-2">Agendar Cita</h2>
+        <p class="text-slate-300 small mb-4" style="font-size:.9rem">Completa tus datos para agendar tu consulta quiropráctica.</p>
+        <form id="bookingForm">
+            <div class="mb-3">
+              <label class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" required placeholder="Tu nombre y apellido">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Teléfono / WhatsApp</label>
+              <input type="tel" class="form-control" required placeholder="+52 55 0000 0000">
+            </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <label class="form-label">Fecha</label>
+              <input type="date" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label class="form-label">Hora</label>
+              <input type="time" class="form-control" required>
+            </div>
+          </div>
+            <div class="mb-3">
+              <label class="form-label">Tipo de Terapia</label>
+              <select class="form-select">
+                <option value="quiro">Ajuste Quiropráctico Espinal</option>
+                <option value="descontracturante">Masaje Terapéutico Descontracturante</option>
+                <option value="mixto">Sesión Integral (Ajuste + Masaje)</option>
+              </select>
+            </div>
+          <button type="submit" class="btn btn-tacto w-100 py-3 rounded-3 mt-2">Confirmar Reserva</button>
+        </form>
+        <div id="bookingSuccessMsg" class="alert alert-tacto d-none mt-3 mb-0">¡Cita reservada con éxito! Nos comunicaremos para confirmar tu horario.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="tacto-footer text-center py-4">
+    <p class="mb-0">© <span id="year"></span> Centro de Masajes Tacto. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

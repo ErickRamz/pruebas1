@@ -1,0 +1,161 @@
+/* ===== Centro de Masajes Tacto — estilos propios (sobre Bootstrap 5) ===== */
+:root {
+  --teal-400: #2dd4bf;
+  --teal-300: #5eead4;
+  --slate-950: #020617;
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #f1f5f9;
+  background-color: var(--slate-950);
+}
+::selection { background: #14b8a6; color: #fff; }
+
+/* Fondo a pantalla completa */
+.bg-hero {
+  background-image: linear-gradient(to bottom, rgba(15,23,42,.75), rgba(15,23,42,.85)),
+    url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Animación de entrada */
+.fade-in { animation: fadeIn .4s ease-in-out forwards; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Utilidades de color */
+.text-teal { color: var(--teal-400) !important; }
+.text-slate-300 { color: var(--slate-300) !important; }
+.text-slate-400 { color: var(--slate-400) !important; }
+
+/* Íconos SVG */
+.ico { width: 1.5rem; height: 1.5rem; flex-shrink: 0; }
+
+/* Header */
+.tacto-header {
+  backdrop-filter: blur(12px);
+  background: rgba(2,6,23,.7);
+  border-bottom: 1px solid rgba(30,41,59,.6);
+}
+.brand-icon {
+  width: 2.5rem; height: 2.5rem; border-radius: .75rem;
+  background: rgba(20,184,166,.2); border: 1px solid rgba(45,212,191,.4);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.navbar-brand:hover .brand-icon { background: rgba(20,184,166,.3); }
+.brand-title { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0; letter-spacing: -.02em; }
+.brand-title span { color: var(--teal-400); font-weight: 800; }
+.brand-sub { font-size: .75rem; color: var(--slate-400); }
+
+.navbar .nav-link,
+.navbar .nav-link:focus,
+.navbar .nav-link:active {
+  color: var(--slate-300); font-weight: 500; font-size: .9rem;
+  border-bottom: 2px solid transparent; padding: .25rem 0; transition: color .2s;
+  box-shadow: none; outline: none;
+}
+.navbar .nav-link:hover { color: #fff; border-bottom-color: transparent; }
+.navbar .nav-link.active { color: var(--teal-400); border-bottom-color: var(--teal-400); }
+
+/* Botón principal */
+.btn-tacto {
+  background: var(--teal-400); color: var(--slate-950); font-weight: 700; border: 0;
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.btn-tacto:hover, .btn-tacto:focus {
+  background: var(--teal-300); color: var(--slate-950);
+  box-shadow: 0 8px 24px rgba(20,184,166,.25);
+}
+.btn-tacto:active { transform: scale(.96); }
+.btn-lift:hover { transform: scale(1.05); }
+
+/* Tarjetas */
+.tacto-card {
+  background: rgba(15,23,42,.8); backdrop-filter: blur(12px);
+  border: 1px solid var(--slate-800); border-radius: 1rem;
+  padding: 1.5rem; height: 100%; transition: border-color .2s;
+}
+.tacto-card:hover { border-color: rgba(20,184,166,.5); }
+.tacto-card-lg { border-radius: 1.5rem; padding: 2rem; }
+.tacto-card-lg:hover { border-color: var(--slate-800); }
+.tacto-card h3 { color: #fff; font-weight: 700; }
+.tacto-card p { color: var(--slate-400); font-size: .875rem; line-height: 1.6; }
+
+.icon-box {
+  width: 3rem; height: 3rem; border-radius: .75rem; margin-bottom: 1.25rem;
+  background: rgba(20,184,166,.2); color: var(--teal-400);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Textos de sección */
+.eyebrow { color: var(--teal-400); font-size: .85rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.page-title { color: #fff; font-weight: 800; font-size: calc(1.6rem + 1.8vw); }
+.lead-soft { color: var(--slate-300); font-weight: 300; font-size: 1.125rem; line-height: 1.7; }
+
+/* Portada */
+.badge-cover {
+  display: inline-block; padding: .4rem 1rem; border-radius: 50rem;
+  font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: #5eead4; background: rgba(4,47,46,.8); border: 1px solid rgba(20,184,166,.3);
+  backdrop-filter: blur(12px);
+}
+.cover-title {
+  font-weight: 900; text-transform: uppercase; color: #fff; line-height: 1;
+  font-size: clamp(3rem, 10vw, 6.5rem); text-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.cover-text { color: var(--slate-300); font-weight: 300; max-width: 42rem; font-size: 1.15rem; line-height: 1.7; }
+
+/* Numeración (Quiénes somos) */
+.num-box {
+  width: 2.5rem; height: 2.5rem; border-radius: .5rem; flex-shrink: 0;
+  background: rgba(20,184,166,.2); color: var(--teal-400); font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Formularios */
+.form-label {
+  font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--slate-400);
+}
+.form-control, .form-select {
+  background-color: rgba(30,41,59,.8); color: #fff;
+  border: 1px solid var(--slate-700); border-radius: .75rem; padding: .75rem 1rem;
+  color-scheme: dark;
+}
+.form-control::placeholder { color: #64748b; }
+.form-control:focus, .form-select:focus {
+  background-color: rgba(30,41,59,.9); color: #fff;
+  border-color: var(--teal-400); box-shadow: none;
+}
+.alert-tacto {
+  background: rgba(19,78,74,.5); border: 1px solid rgba(20,184,166,.5);
+  color: #99f6e4; border-radius: .75rem; text-align: center; font-size: .875rem;
+}
+
+/* Mapa simulado */
+.map-badge {
+  height: 10rem; background: var(--slate-800); border: 1px solid var(--slate-700);
+  border-radius: 1rem; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.map-badge::before { content: ""; position: absolute; inset: 0; background: rgba(4,47,46,.4); transition: background .2s; }
+.map-badge:hover::before { background: rgba(4,47,46,.2); }
+.map-badge span { position: relative; color: var(--slate-300); font-size: .875rem; font-weight: 600; }
+
+/* Footer */
+.tacto-footer {
+  border-top: 1px solid rgba(30,41,59,.6); backdrop-filter: blur(12px);
+  background: rgba(2,6,23,.8); color: var(--slate-400); font-size: .75rem;
+}
