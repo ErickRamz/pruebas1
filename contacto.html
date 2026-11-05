@@ -124,19 +124,15 @@
     btn.disabled = true;
     btn.innerText = 'Enviando...';
 
-    const payload = {
-      nombre: document.getElementById('nombre').value,
-      correo: document.getElementById('correo').value,
-      mensaje: document.getElementById('mensaje').value
-    };
+    const formData = new URLSearchParams();
+    formData.append('nombre', document.getElementById('nombre').value);
+    formData.append('correo', document.getElementById('correo').value);
+    formData.append('mensaje', document.getElementById('mensaje').value);
 
     fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
+      body: formData
     })
     .then(() => {
       alert('¡Mensaje enviado con éxito!');
