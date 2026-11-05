@@ -84,11 +84,11 @@
           <div class="tacto-card tacto-card-lg">
             <h3 class="h4 mb-4">Envíanos un Mensaje</h3>
             
-            <!-- Formulario HTML nativo hacia Google Apps Script (Sin CORS/JS bloqueos) -->
+            <!-- Formulario directo a Apps Script usando iframe oculto -->
             <form action="https://script.google.com/macros/s/AKfycbzlu-6dYHMG4kKig4h2wV-kg-R_N3T0h9Sm45grIiVC1-oUrc9hmSTRMAmlXNTaq-hL/exec" 
                   method="POST" 
                   target="hidden_iframe" 
-                  onsubmit="const b=document.getElementById('btnEnviar'); b.disabled=true; b.innerText='Enviando...'; setTimeout(() => { alert('¡Mensaje enviado con éxito!'); this.reset(); b.disabled=false; b.innerText='Enviar Mensaje'; }, 800);">
+                  onsubmit="const b=document.getElementById('btnEnviar'); const m=document.getElementById('contactSuccessMsg'); b.disabled=true; b.innerText='Enviando...'; setTimeout(() => { m.classList.remove('d-none'); this.reset(); b.disabled=false; b.innerText='Enviar Mensaje'; setTimeout(() => m.classList.add('d-none'), 5000); }, 800);">
               
               <div class="mb-3">
                 <label class="form-label">Nombre Completo</label>
@@ -105,6 +105,9 @@
               
               <button type="submit" id="btnEnviar" class="btn btn-tacto w-100 py-3 rounded-3">Enviar Mensaje</button>
             </form>
+
+            <!-- Mensaje de éxito dentro del diseño del sitio (en lugar de la alerta emergente) -->
+            <div id="contactSuccessMsg" class="alert alert-tacto d-none mt-3 mb-0">¡Mensaje enviado con éxito! Te responderemos muy pronto.</div>
 
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
             
